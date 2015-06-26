@@ -21,10 +21,10 @@ html(lang="en-UK", data-theme="light")
         a.branding(href="https://www.erstegroup.com/")
           include /logo.svg
       main
-        h1.title.container.full-width Colours for Digital Media
+        h1.full-width Colours for Digital Media
         each subset in Object.keys(meta)
           section.container.colors(class="colors-#{subset}")
-            h2.title= meta[subset].title
+            h2= meta[subset].title
             p= meta[subset].description
             table
               thead
