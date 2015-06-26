@@ -1,0 +1,1 @@
+# Erste Group color scheme
