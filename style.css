@@ -1,0 +1,279 @@
+*,
+::before,
+::after {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+::-moz-selection {
+  color: #fff;
+  text-shadow: none;
+  background: #e30613;
+}
+::selection {
+  color: #fff;
+  text-shadow: none;
+  background: #e30613;
+}
+
+@page {
+  margin: 20mm;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+html {
+  font: 16px/1.375 "Open Sans", sans-serif;
+  color: #000;
+}
+[data-theme="dark"] {
+  background-color: #000;
+  color: #fff;
+}
+
+.container {
+  position: relative;
+  display: block;
+  max-width: 76em;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 2em;
+}
+
+header {
+  background-color: #bce4fa;
+  color: #00497b;
+  text-align: right;
+}
+
+.branding {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 2em;
+  width: 7.5em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+.logo {
+  display: block;
+  width: 100%;
+}
+
+main {
+  min-height: 100%;
+}
+
+main .container::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.colors-main {
+  float: left;
+  width: 22em;
+}
+.colors-additional {
+  float: right;
+  width: 46em;
+}
+
+h1,
+h2 {
+  color: #00385f;
+  font-size: inherit;
+}
+[data-theme="dark"] h1,
+[data-theme="dark"] h2 {
+  color: #bce4fa;
+}
+h1 {
+  margin-bottom: 1em;
+  padding-bottom: .25em;
+  border-bottom: 1px solid #00385f;
+  color: #00385f;
+  font-size: 2em;
+  font-weight: inherit;
+}
+[data-theme="dark"] h1 {
+  border-bottom-color: #bce4fa;
+}
+
+h2 + p {
+  margin-bottom: 1em;
+}
+
+a {
+  text-decoration: none;
+}
+a:focus,
+a:hover {
+  text-decoration: underline;
+}
+a:visited {
+  color: inherit;
+}
+
+code {
+  font-family: inherit;
+}
+i {
+  letter-spacing: .1875em;
+}
+i,
+small {
+  color: #313a45;
+  font-weight: 300;
+}
+[data-theme="dark"] i,
+[data-theme="dark"] small {
+  color: #e2f4fe;
+}
+small {
+  font-size: inherit;
+}
+
+table {
+  display: block;
+  -moz-column-count: 2;
+  -webkit-column-count: 2;
+  column-count: 2;
+  -moz-column-gap: 2em;
+  -webkit-column-gap: 2em;
+  column-gap: 2em;
+}
+.colors-additional table {
+  -moz-column-count: 4;
+  -webkit-column-count: 4;
+  column-count: 4;
+}
+thead {
+  display: none;
+}
+tbody {
+  display: block;
+}
+tr {
+  display: block;
+  position: relative;
+  width: 10em;
+  margin: 0 0 2em;
+  padding-top: .125em;
+  border-top: 2em solid transparent;
+  -moz-column-break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+  column-break-inside: avoid;
+}
+[data-color="#313a45"],
+[data-color="#9e0000"] {
+  -moz-column-break-before: always;
+  -webkit-column-break-before: always;
+  column-break-before: always;
+}
+td {
+  display: block;
+  padding: 0;
+}
+td:last-child {
+  overflow: hidden;
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  height: 2.6667em;
+  width: 100%;
+  border: 1px solid transparent;
+  color: #fff;
+  font-size: 75%;
+  line-height: 2.5em;
+  text-align: center;
+  text-overflow: ellipsis;
+  text-shadow: 0 0 .25em #000;
+  white-space: nowrap;
+}
+[data-theme="light"] [data-color="#ffffff"] td:last-child {
+  border-color: #000;
+}
+[data-theme="dark"] [data-color="#000000"] td:last-child {
+  border-color: #fff;
+}
+
+footer {
+  background-color: #313a45;
+  color: #aabacc;
+}
+footer a {
+  color: inherit;
+}
+.build {
+  float: right;
+}
+
+.theme-toggle {
+  cursor: pointer;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.theme-toggle b {
+  display: inline-block;
+  width: 6ex;
+  background-color: #fff;
+  border-radius: 0.6875em;
+  color: #000;
+  font-weight: inherit;
+  text-align: center;
+}
+[data-theme="dark"] .theme-toggle b {
+  background-color: #000;
+  color: #fff;
+}
+
+@media screen {
+  .hidden-screen {
+    display: none !important;
+  }
+}
+@media print {
+  .hidden-print {
+    display: none !important;
+  }
+  * {
+    float: none !important;
+    color: #000 !important;
+  }
+  html {
+    font-size: 11pt;
+  }
+  .branding {
+    float: right;
+    position: static;
+    margin-top: -1em;
+    left: auto;
+    width: 5em;
+  }
+  .container {
+    max-width: none;
+    margin: 1em 0;
+    padding: 0;
+  }
+  footer {
+    padding-top: .25em;
+    border-top: 1px solid #999;
+  }
+  [title="love"] {
+    color: #e30613 !important;
+  }
+}
