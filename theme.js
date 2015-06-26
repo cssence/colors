@@ -3,7 +3,7 @@
   "use strict";
   window.$ = document.querySelector.bind(document);
   if ($) {
-    $("header .container").insertAdjacentHTML("afterbegin", "<span class=\"theme-toggle hidden-print\">Theme: <b>" + $("html").getAttribute("data-theme") + "</b></span>");
+    $("header .container").insertAdjacentHTML("beforeend", "<span class=\"theme-toggle hidden-print\">Theme: <b>light</b></span>");
     $(".theme-toggle").addEventListener("click", function () {
       var changeTo = $("html").getAttribute("data-theme") === "dark" ? "light" : "dark";
       $(".theme-toggle b").textContent = changeTo;
