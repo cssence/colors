@@ -309,7 +309,7 @@ i {
   }
 }
 
-@media screen and (min-width: 48em) and (max-width: 75.99em) {
+@media screen and (min-width: 48em) {
   table::after {
     content: "";
     clear: both;
@@ -324,7 +324,6 @@ i {
     margin-left: 2em;
   }
   [data-color="#e30613"],
-  [data-color="#aabacc"],
   [data-color="#d4edfc"],
   [data-color="#313a45"],
   [data-color="#9e0000"] {
@@ -359,28 +358,9 @@ i {
     white-space: nowrap;
   }
   table {
-       -moz-column-count: 2;
-    -webkit-column-count: 2;
-            column-count: 2;
-       -moz-column-gap: 2em;
-    -webkit-column-gap: 2em;
-            column-gap: 2em;
-  }
-  .colors-additional table {
-       -moz-column-count: 4;
-    -webkit-column-count: 4;
-            column-count: 4;
+    min-height: 48.375em;
   }
   tr {
     width: 10em;
-       -moz-column-break-inside: avoid;
-    -webkit-column-break-inside: avoid;
-            column-break-inside: avoid;
-  }
-  [data-color="#313a45"],
-  [data-color="#9e0000"] {
-       -moz-column-break-before: always;
-    -webkit-column-break-before: always;
-            column-break-before: always;
   }
 }
