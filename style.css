@@ -118,6 +118,20 @@ i {
   body {
     height: 100%;
   }
+  
+  body {
+    padding-right: 2em;
+    padding-left: 2em;
+  }
+  .container {
+    padding-top: 2em;
+    padding-bottom: 2em;
+  }
+  .full-width {
+    margin: 0 calc(0px - (100vw - 100%) / 2);
+    padding-left: calc((100vw - 100%) / 2);
+    padding-right: calc((100vw - 100%) / 2);
+  }
 
   main {
     min-height: 100%;
@@ -131,17 +145,13 @@ i {
     color: #fff;
   }
 
-  .container {
-    padding: 2em;
-  }
-
   header {
     background-color: #bce4fa;
     color: #00497b;
     text-align: right;
   }
-  header .container {
-    position: relative;
+  header::before {
+    content: "\a0";
   }
 
   .branding {
@@ -236,8 +246,13 @@ i {
 }
 
 @media screen and (max-width: 47.99em) {
+  body {
+    padding-right: 1em;
+    padding-left: 1em;
+  }
   .container {
-    padding: 1em;
+    padding-top: 1em;
+    padding-bottom: 1em;
   }
   .branding {
     margin-top: -1.5em;
@@ -262,15 +277,9 @@ i {
   .description::after {
     content: "\201d";
   }
-  /*tr {
-    border-top-width: 4em;
-    margin-right: -1em;
-    margin-left: -1em;
+  .colors-additional {
+    padding-bottom: 0;
   }
-  td {
-    padding-right: 1em;
-    padding-left: 1em;
-  }*/
   footer {
     text-align: center;
   }
@@ -338,7 +347,7 @@ i {
 }
 
 @media screen and (min-width: 76em) {
-  .container {
+  body {
     width: 76em;
     margin-right: auto;
     margin-left: auto;
