@@ -41,16 +41,18 @@ module.exports = function (grunt) {
       index: {
         options: {
           data: function (dest, src) {
-            var destFolder = grunt.config.get("pkg").config.paths.dist;
+            var folder, options;
+            folder = grunt.config.get("pkg").config.paths.dist;
+            options = {encoding: "utf8"};
             return {
               pkg: grunt.file.readJSON("package.json"),
               inline: {
-                logo: grunt.file.read(destFolder + "/logo.svg", {encoding: "utf8"}),
-                script: grunt.file.read(destFolder + "/theme.min.js"),
-                style: grunt.file.read(destFolder + "/style.min.css")
+                logo: grunt.file.read(folder + "/logo.svg", options),
+                script: grunt.file.read(folder + "/theme.min.js", options),
+                style: grunt.file.read(folder + "/style.min.css", options)
               },
-              meta: grunt.file.readJSON(destFolder + "/description.json"),
-              colors: grunt.file.readJSON(destFolder + "/colors.json")
+              meta: grunt.file.readJSON(folder + "/description.json"),
+              colors: grunt.file.readJSON(folder + "/colors.json")
             };
           }
         },

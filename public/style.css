@@ -30,6 +30,7 @@ abbr {
 }
 
 i {
+  color: #999;
   font-style: inherit;
 }
 
@@ -86,9 +87,6 @@ i {
   }
   tr > :nth-child(2) {
     width: 10em;
-  }
-  i {
-    color: #e6ebf0;
   }
   code {
     font-size: 10pt;
@@ -202,12 +200,6 @@ i {
 
   code {
     font-family: inherit;
-  }
-  i {
-    color: #313a45;
-  }
-  [data-theme="dark"] i {
-    color: #e2f4fe;
   }
 
   thead {

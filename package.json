@@ -25,6 +25,6 @@
     "paths": {
       "dist": "public"
     },
-    "port": 8085
+    "port": 3000
   }
 }

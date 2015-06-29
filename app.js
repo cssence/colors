@@ -17,7 +17,7 @@
 
   // Data requirements
   data.inline = {
-    logo: fs.readFileSync(path.join(dirname, config.dist, "logo.svg"), {encoding: "utf8"})
+    logo: fs.readFileSync(path.join(dirname, config.dist, "logo.svg"))
   };
   data.meta = require(path.join(dirname, config.dist, "description.json"));
   data.colors = require(path.join(dirname, config.dist, "colors.json"));
