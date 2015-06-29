@@ -11,9 +11,8 @@ html(lang="en-UK", data-theme="light")
     //link(rel="apple-touch-icon-precomposed", href="apple-touch-icon.png")
     block stylesheets
       link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Open+Sans:700,300,400")
-      if inline
-        style
-          include style.min.css
+      if inline.style
+        style!= inline.style
       else
         link(rel="stylesheet", href="/style.css")
 
@@ -22,8 +21,7 @@ html(lang="en-UK", data-theme="light")
     block content
       header
         .full-width(role="banner")
-          a.branding(href="https://www.erstegroup.com/")
-            include logo.svg
+          a.branding(href="https://www.erstegroup.com/")!= inline.logo
         h1.full-width Colours for Digital&nbsp;Media
       main(role="main")
         each subset in Object.keys(meta)
@@ -63,7 +61,7 @@ html(lang="en-UK", data-theme="light")
             |  by 
             a(href="http://www.beeone.at/") BeeOne GmbH
           p.legal
-            a(href=config.repository.url.split(".").slice(0, -1).join(".") + "/blob/master/README.md")
+            a(href=pkg.repository.url.split(".").slice(0, -1).join(".") + "/blob/master/README.md")
               abbr(title="Copyright") &copy;
               |  2015
             |  
@@ -71,8 +69,7 @@ html(lang="en-UK", data-theme="light")
 
 
     block javascripts
-      if inline
-        script
-          include theme.min.js
+      if inline.script
+        script!= inline.script
       else
         script(src="/theme.js")

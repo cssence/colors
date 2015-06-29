@@ -3,30 +3,31 @@
 (function (console, require, dirname) {
   "use strict";
 
-  var nconf, path, app, data = {};
+  var path, fs, app, config = {}, data = {};
 
   // Module dependencies
-  nconf = require("nconf");
   path = require("path");
+  fs = require("fs");
+  data.pkg = require(path.join(dirname, "package.json"));
+  config.port = data.pkg.config.port || 8080;
+  config.dist = data.pkg.config.paths.dist || "";
+  config.serveStatic = {
+    root: path.join(dirname, config.dist)
+  };
 
-  // Read configuration
-  nconf.argv().env().file({file: path.join(dirname, "./package.json")}).defaults({
-    "env": "development",
-    "port": 8080
-  });
+  // Data requirements
+  data.inline = {
+    logo: fs.readFileSync(path.join(dirname, config.dist, "logo.svg"), {encoding: "utf8"})
+  };
+  data.meta = require(path.join(dirname, config.dist, "description.json"));
+  data.colors = require(path.join(dirname, config.dist, "colors.json"));
 
   // Initialization
   app = require("express")();
   app.locals.basedir = dirname;
-  app.set("port", nconf.get("port"));
-  app.use(require("serve-static")(dirname));
+  app.set("port", config.port);
   app.set("views", dirname);
   app.set("view engine", "jade");
-
-  // Data requirements
-  data.config = require(path.join(dirname, "./package.json"));
-  data.colors = require(path.join(dirname, "./colors.json"));
-  data.meta = require(path.join(dirname, "./description.json"));
 
   // Routes
   app.get("/", function (req, res) {
@@ -35,12 +36,19 @@
   app.get("/get", function (req, res) {
     res.json(data.colors);
   });
+  app.get("/:file", function (req, res) {
+    res.sendFile(req.params.file, config.serveStatic, function (err) {
+      if (err) {
+        res.status(err.status).end();
+      }
+    });
+  });
   app.use(function (req, res) {
     res.status(404).end();
   });
 
   // Http server
-  require("http").createServer(app).listen(nconf.get("port"), function () {
-    console.info("Express %s server listening on port %d", nconf.get("env"), nconf.get("port"));
+  require("http").createServer(app).listen(config.port, function () {
+    console.info("Express server listening on port %d", config.port);
   });
 }(console, require, __dirname));

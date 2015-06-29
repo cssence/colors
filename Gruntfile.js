@@ -9,8 +9,8 @@ module.exports = function (grunt) {
 
     // clean public directory
     clean: {
-      base: ["*.min.*"],
-      dist: ["<%= pkg.config.paths.dist %>/*.min.*"]
+      minified: ["<%= pkg.config.paths.dist %>/*.min.*"],
+      html: ["<%= pkg.config.paths.dist %>/*.html"]
     },
 
     postcss: {
@@ -22,7 +22,7 @@ module.exports = function (grunt) {
       },
       dist: {
         expand: true,
-        src: ["*.css"],
+        src: ["<%= pkg.config.paths.dist %>/*.css"],
         ext: ".min.css"
       }
     },
@@ -31,26 +31,31 @@ module.exports = function (grunt) {
     uglify: {
       js: {
         expand: true,
-        src: ["*.js", "!Gruntfile.js", "!app.js"],
+        src: ["<%= pkg.config.paths.dist %>/*.js"],
         ext: ".min.js"
       }
     },
 
     // jade compile
     jade: {
-      compile: {
+      index: {
         options: {
-          data: {
-            inline: true,
-            config: require("./package.json"),
-            colors: require("./colors.json"),
-            meta: require("./description.json")
+          data: function (dest, src) {
+            var destFolder = grunt.config.get("pkg").config.paths.dist;
+            return {
+              pkg: grunt.file.readJSON("package.json"),
+              inline: {
+                logo: grunt.file.read(destFolder + "/logo.svg", {encoding: "utf8"}),
+                script: grunt.file.read(destFolder + "/theme.min.js"),
+                style: grunt.file.read(destFolder + "/style.min.css")
+              },
+              meta: grunt.file.readJSON(destFolder + "/description.json"),
+              colors: grunt.file.readJSON(destFolder + "/colors.json")
+            };
           }
         },
-        expand: true,
-        src: ["*.jade"],
-        dest: "<%= pkg.config.paths.dist %>/",
-        ext: ".html"
+        src: "colors.jade",
+        dest: "<%= pkg.config.paths.dist %>/index.html"
       }
     }
 
@@ -65,12 +70,12 @@ module.exports = function (grunt) {
   grunt.registerTask(
     "build",
     "Prepares project deployment",
-    ["clean:base", "postcss:dist", "uglify:js"]
+    ["clean", "postcss", "uglify"]
   );
   grunt.registerTask(
     "release",
     "Deploys the project (generate HTML)",
-    ["build", "jade:compile"]
+    ["build", "jade"]
   );
 
   // Default task(s).
