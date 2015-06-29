@@ -8,22 +8,25 @@
   // Module dependencies
   nconf = require("nconf");
   path = require("path");
-  data.colors = require(path.join(dirname, "/colors.json"));
-  data.meta = require(path.join(dirname, "/description.json"));
 
   // Read configuration
-  nconf.argv().env().file({file: path.join(dirname, "/settings.json")}).defaults({
+  nconf.argv().env().file({file: path.join(dirname, "./package.json")}).defaults({
     "env": "development",
     "port": 8080
   });
 
   // Initialization
   app = require("express")();
-  app.locals.basedir = path.join(dirname, "/");
+  app.locals.basedir = dirname;
   app.set("port", nconf.get("port"));
-  app.use(require("serve-static")(path.join(dirname, "/")));
-  app.set("views", path.join(dirname, "/"));
+  app.use(require("serve-static")(dirname));
+  app.set("views", dirname);
   app.set("view engine", "jade");
+
+  // Data requirements
+  data.config = require(path.join(dirname, "./package.json"));
+  data.colors = require(path.join(dirname, "./colors.json"));
+  data.meta = require(path.join(dirname, "./description.json"));
 
   // Routes
   app.get("/", function (req, res) {

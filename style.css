@@ -1,10 +1,7 @@
 *,
-*,
-::before,
-::after {
-  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 html {
@@ -96,7 +93,8 @@ i {
   code {
     font-size: 10pt;
   }
-  .branding {
+  .branding,
+  .build {
     float: right;
   }
   .colors + .colors {
@@ -131,7 +129,7 @@ i {
     padding-bottom: 2em;
   }
   .full-width {
-    margin: 0 calc(0px - (100vw - 100%) / 2);
+    margin: 0 calc(-1 * (100vw - 100%) / 2);
     padding-left: calc((100vw - 100%) / 2);
     padding-right: calc((100vw - 100%) / 2);
   }
@@ -232,11 +230,6 @@ i {
 
   .theme-toggle {
     cursor: pointer;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
     user-select: none;
   }
   .theme-toggle b {
@@ -367,7 +360,7 @@ i {
     width: 22em;
   }
   .colors-additional {
-    margin-left: 26em;
+    margin-left: auto;
     width: 46em;
   }
   h2 {

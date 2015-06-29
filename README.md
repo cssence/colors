@@ -1,4 +1,4 @@
-# Erste Group color scheme
+# colors - Erste Group color scheme
 
 Copyright 2015 Erste Group Bank AG, unless stated otherwise.
 
