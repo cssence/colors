@@ -143,14 +143,10 @@ i {
   main {
     min-height: 100%;
   }
-  #night-mode:checked ~ main {
-    background-color: #000;
-    color: #fff;
-  }
 
   [role="banner"],
   [for="night-mode"] {
-    height: 5.25em;
+    height: 5.25rem;
   }
   [role="banner"] {
     background-color: #bce4fa;
@@ -222,30 +218,32 @@ i {
   }
   [for="night-mode"] {
     position: absolute;
+    font-size: 0;
     top: 0;
-    right: 2em;
-    padding-top: 2em;
+    right: 2rem;
+    padding-top: 2rem;
     color: #00497b;
     cursor: pointer;
-    user-select: none;
-  }
-  [for="night-mode"]::after {
-    content: ":";
   }
   [for="night-mode"]::before {
-    content: "OFF";
-    float: right;
+    content: "Theme: ";
+    font-size: 1rem;
+  }
+  [for="night-mode"]::after {
+    content: "Light";
     display: inline-block;
-    width: 6ex;
-    margin-left: 1ex;
+    width: 3.5rem;
     background-color: #fff;
-    border-radius: 0.6875em;
+    border-radius: .6875rem;
     color: #000;
-    font-weight: inherit;
+    font-size: 1rem;
     text-align: center;
   }
-  #night-mode:checked + [for="night-mode"]::before {
-    content: "ON";
+  #night-mode:checked + [for="night-mode"]::after {
+    content: "Dark";
+  }
+  #night-mode:checked + [for="night-mode"]::after,
+  #night-mode:checked ~ main {
     background-color: #000;
     color: #fff;
   }
@@ -299,11 +297,11 @@ i {
   }
   [role="banner"],
   [for="night-mode"] {
-    height: 4.1875em;
+    height: 4.1875rem;
   }
   [for="night-mode"] {
-    right: 1em;
-    padding-top: 1.375em;
+    right: 1rem;
+    padding-top: 1.375rem;
   }
 }
 
