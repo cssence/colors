@@ -21,6 +21,7 @@
   app = require("express")();
   app.locals.basedir = path.join(dirname, "/");
   app.set("port", nconf.get("port"));
+  app.use(require("serve-static")(path.join(dirname, "/")));
   app.set("views", path.join(dirname, "/"));
   app.set("view engine", "jade");
 
