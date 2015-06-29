@@ -27,15 +27,6 @@ module.exports = function (grunt) {
       }
     },
 
-    // uglify and concat js
-    uglify: {
-      js: {
-        expand: true,
-        src: ["<%= pkg.config.paths.dist %>/*.js"],
-        ext: ".min.js"
-      }
-    },
-
     // jade compile
     jade: {
       index: {
@@ -48,7 +39,6 @@ module.exports = function (grunt) {
               pkg: grunt.file.readJSON("package.json"),
               inline: {
                 logo: grunt.file.read(folder + "/logo.svg", options),
-                script: grunt.file.read(folder + "/theme.min.js", options),
                 style: grunt.file.read(folder + "/style.min.css", options)
               },
               meta: grunt.file.readJSON(folder + "/description.json"),
@@ -66,13 +56,12 @@ module.exports = function (grunt) {
   // Load the plugins
   grunt.loadNpmTasks("grunt-contrib-clean");
   grunt.loadNpmTasks("grunt-postcss");
-  grunt.loadNpmTasks("grunt-contrib-uglify");
   grunt.loadNpmTasks("grunt-contrib-jade");
 
   grunt.registerTask(
     "build",
     "Prepares project deployment",
-    ["clean", "postcss", "uglify"]
+    ["clean", "postcss"]
   );
   grunt.registerTask(
     "release",
