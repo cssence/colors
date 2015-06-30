@@ -1,0 +1,10 @@
+{
+  "main": {
+    "title": "Primary and Secondary Colour Definitions",
+    "description": "Use these colours for the main elements."
+  },
+  "additional": {
+    "title": "Additional Colour Definitions",
+    "description": "Use these colours for small elements and exceptions only."
+  }
+}
