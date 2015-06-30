@@ -19,13 +19,13 @@ html(lang="en-UK")
   body
 
     block content
-      header
-        .full-width(role="banner")
-          a.branding(href="https://www.erstegroup.com/")!= inline.logo
-        h1.full-width Colours for Digital&nbsp;Media
       .content
-        input(id="night-mode" type="checkbox")
-        label(for="night-mode")  Night mode
+        header
+          .full-width(role="banner")
+            a.branding(href="https://www.erstegroup.com/")!= inline.logo
+          h1.full-width Colours for Digital&nbsp;Media
+        input.hidden-print(id="night-mode" type="checkbox")
+        label.hidden-print(for="night-mode")  Night mode
         main.full-width
           each subset in Object.keys(meta)
             section.colors(class="colors-#{subset}")
