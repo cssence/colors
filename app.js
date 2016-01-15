@@ -30,20 +30,21 @@
   app.set("view engine", "jade");
 
   // Routes
-  app.get("/", function (req, res) {
-    res.render("colors", data);
+  app.get("*", function (req, res) { // GET
+    console.log("GET %s", req.url);
+    if (req.url === "/") {
+      res.render("colors", data);
+    } else if (req.url === "/get") {
+      res.json(data.colors);
+    } else {
+      res.sendFile(req.url, config.serveStatic, function (err) {
+        if (err) {
+          res.status(err.status).end();
+        }
+      });
+    }
   });
-  app.get("/get", function (req, res) {
-    res.json(data.colors);
-  });
-  app.get("/:file", function (req, res) {
-    res.sendFile(req.params.file, config.serveStatic, function (err) {
-      if (err) {
-        res.status(err.status).end();
-      }
-    });
-  });
-  app.use(function (req, res) {
+  app.use(function (req, res) { // POST, PUT, DELETE
     res.status(404).end();
   });
 
